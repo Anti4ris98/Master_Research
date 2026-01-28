@@ -260,6 +260,23 @@ print("Filtering to 2012-2024 period...")
 master = master[master['year'] >= 2012].copy()
 print(f"✓ Filtered to relevant period: {len(master)} rows ({master['year'].min()}-{master['year'].max()})\n")
 
+# Add development category classification
+print("Adding development category classification...")
+def classify_development(income_group):
+    if pd.isna(income_group):
+        return None
+    if income_group == 'High income':
+        return 'Developed'
+    elif income_group in ['Upper middle income', 'Lower middle income']:
+        return 'Developing'
+    else:
+        return None
+
+master['development_category'] = master['income_group'].apply(classify_development)
+print(f"✓ Development categories:")
+print(master['development_category'].value_counts())
+print()
+
 # Save processed data
 master.to_csv(OUTPUTS / "data" / "master_panel.csv", index=False)
 master.to_csv(OUTPUTS / "data" / "analysis_ready.csv", index=False)
@@ -301,6 +318,19 @@ covid_impact = master.groupby('covid_19_shock').agg({
 }).round(2)
 covid_impact.to_csv(OUTPUTS / "data" / "covid_impact.csv")
 print("✓ Saved: outputs/data/covid_impact.csv\n")
+
+# Developed vs Developing comparison
+print("Developed vs Developing countries analysis...")
+dev_comparison = master.groupby('development_category').agg({
+    'ecom_sales_usd_millions': 'mean',
+    'ecom_share_pct': 'mean',
+    'internet_users_pct': 'mean',
+    'ecom_sales_growth': 'mean',
+    'country_name': 'nunique'
+}).round(2)
+dev_comparison = dev_comparison.rename(columns={'country_name': 'num_countries'})
+dev_comparison.to_csv(OUTPUTS / "data" / "developed_vs_developing_comparison.csv")
+print("✓ Saved: outputs/data/developed_vs_developing_comparison.csv\n")
 
 print("✓ Data analysis complete\n")
 
@@ -539,6 +569,178 @@ for region in master_viz['region'].dropna().unique():
 
 print()
 
+# 6. COMPARATIVE VISUALIZATIONS: Developed vs Developing Countries
+print("\nCreating comparative visualizations (Developed vs Developing)...")
+
+# Filter out rows without development category
+master_dev = master_viz[master_viz['development_category'].notna()].copy()
+
+# Color scheme
+DEV_COLORS = {
+    'Developed': '#1f77b4',  # Blue
+    'Developing': '#ff7f0e'  # Orange
+}
+
+# Visualization 1: E-commerce share trends comparison
+fig = go.Figure()
+
+for dev_cat in ['Developed', 'Developing']:
+    data = master_dev[master_dev['development_category'] == dev_cat].groupby('year')['ecom_share_pct'].mean().reset_index()
+    fig.add_trace(go.Scatter(
+        x=data['year'],
+        y=data['ecom_share_pct'],
+        mode='lines+markers',
+        name=dev_cat,
+        line=dict(color=DEV_COLORS[dev_cat], width=3),
+        marker=dict(size=10),
+        hovertemplate=f'<b>{dev_cat}</b><br>Year: %{{x}}<br>Share: %{{y:.2f}}%<extra></extra>'
+    ))
+
+fig = add_crisis_markers(fig, master_dev.groupby('year')['ecom_share_pct'].max())
+
+fig.update_layout(
+    title='E-commerce Share: Developed vs Developing Countries<br><sub>Comparison of economic development levels • Crisis markers shown</sub>',
+    xaxis_title='Year',
+    yaxis_title='E-commerce Share (%)',
+    hovermode='x unified',
+    template='plotly_white',
+    height=600,
+    legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.01),
+    font=dict(size=12)
+)
+
+fig.write_html(OUTPUTS / "Visualizations" / "developed_vs_developing_trend.html")
+print("  ✓ developed_vs_developing_trend.html")
+
+# Visualization 2: Box plot distribution comparison
+fig = go.Figure()
+
+for dev_cat in ['Developed', 'Developing']:
+    data = master_dev[master_dev['development_category'] == dev_cat]['ecom_share_pct']
+    fig.add_trace(go.Box(
+        y=data,
+        name=dev_cat,
+        marker_color=DEV_COLORS[dev_cat],
+        boxmean='sd'
+    ))
+
+fig.update_layout(
+    title='E-commerce Share Distribution: Developed vs Developing<br><sub>Box plots showing median, quartiles, and outliers</sub>',
+    yaxis_title='E-commerce Share (%)',
+    template='plotly_white',
+    height=600,
+    font=dict(size=12),
+    showlegend=True
+)
+
+fig.write_html(OUTPUTS / "Visualizations" / "developed_vs_developing_distribution.html")
+print("  ✓ developed_vs_developing_distribution.html")
+
+# Visualization 3: Internet penetration vs E-commerce scatter plot
+fig = px.scatter(
+    master_dev,
+    x='internet_users_pct',
+    y='ecom_share_pct',
+    color='development_category',
+    color_discrete_map=DEV_COLORS,
+    title='Internet Penetration vs E-commerce Adoption<br><sub>Relationship between digital infrastructure and e-commerce by development level</sub>',
+    labels={
+        'internet_users_pct': 'Internet Users (%)',
+        'ecom_share_pct': 'E-commerce Share (%)',
+        'development_category': 'Development Category'
+    },
+    template='plotly_white',
+    height=600,
+    opacity=0.6,
+    trendline='ols'
+)
+
+fig.update_traces(marker=dict(size=8))
+fig.update_layout(font=dict(size=12))
+
+fig.write_html(OUTPUTS / "Visualizations" / "development_internet_vs_ecom.html")
+print("  ✓ development_internet_vs_ecom.html")
+
+# Visualization 4: COVID-19 impact comparison
+pre_covid_dev = master_dev[master_dev['year'] < 2020].copy()
+pre_covid_dev['period'] = 'Pre-COVID'
+
+covid_dev = master_dev[(master_dev['year'] >= 2020) & (master_dev['year'] <= 2022)].copy()
+covid_dev['period'] = 'COVID Era'
+
+post_covid_dev = master_dev[master_dev['year'] > 2022].copy()
+post_covid_dev['period'] = 'Post-COVID'
+
+all_periods_dev = pd.concat([pre_covid_dev, covid_dev, post_covid_dev])
+
+fig = go.Figure()
+
+for dev_cat in ['Developed', 'Developing']:
+    for period in ['Pre-COVID', 'COVID Era', 'Post-COVID']:
+        data = all_periods_dev[
+            (all_periods_dev['development_category'] == dev_cat) & 
+            (all_periods_dev['period'] == period)
+        ]['ecom_share_pct']
+        
+        fig.add_trace(go.Box(
+            y=data,
+            name=f'{dev_cat} - {period}',
+            marker_color=DEV_COLORS[dev_cat],
+            boxmean=True
+        ))
+
+fig.update_layout(
+    title='COVID-19 Impact: E-commerce Share by Development Level<br><sub>Comparing resilience across economic development categories</sub>',
+    yaxis_title='E-commerce Share (%)',
+    xaxis_title='Group',
+    template='plotly_white',
+    height=700,
+    font=dict(size=12),
+    showlegend=True
+)
+
+fig.write_html(OUTPUTS / "Visualizations" / "covid_impact_by_development.html")
+print("  ✓ covid_impact_by_development.html")
+
+# Visualization 5: Growth rate comparison during crisis periods
+crisis_years = [2008, 2020, 2022]
+growth_data = []
+
+for crisis_year in crisis_years:
+    # Get growth rates for 1 year after crisis
+    crisis_data = master_dev[master_dev['year'].isin([crisis_year, crisis_year + 1])]
+    
+    for dev_cat in ['Developed', 'Developing']:
+        cat_data = crisis_data[crisis_data['development_category'] == dev_cat]
+        if len(cat_data) > 0:
+            avg_growth = cat_data['ecom_sales_growth'].mean()
+            growth_data.append({
+                'Crisis': CRISIS_EVENTS.get(crisis_year, str(crisis_year)),
+                'Development': dev_cat,
+                'Growth Rate': avg_growth
+            })
+
+growth_df = pd.DataFrame(growth_data)
+
+fig = px.bar(
+    growth_df,
+    x='Crisis',
+    y='Growth Rate',
+    color='Development',
+    color_discrete_map=DEV_COLORS,
+    barmode='group',
+    title='E-commerce Growth During Crisis Periods<br><sub>Average growth rates by development category during major crises</sub>',
+    labels={'Growth Rate': 'Average E-commerce Sales Growth (%)'},
+    template='plotly_white',
+    height=600
+)
+
+fig.update_layout(font=dict(size=12))
+fig.write_html(OUTPUTS / "Visualizations" / "growth_comparison_crises.html")
+print("  ✓ growth_comparison_crises.html")
+
+print()
+
 # ============================================================================
 # FINAL SUMMARY
 # ============================================================================
@@ -563,6 +765,14 @@ print("  📋 Tables:")
 print("    - outputs/data/summary_statistics.csv")
 print("    - outputs/data/regional_comparison.csv")
 print("    - outputs/data/covid_impact.csv")
+print("    - outputs/data/developed_vs_developing_comparison.csv")
+print()
+print("  🔄 Comparative Visualizations (Developed vs Developing):")
+print("    - outputs/Visualizations/developed_vs_developing_trend.html")
+print("    - outputs/Visualizations/developed_vs_developing_distribution.html")
+print("    - outputs/Visualizations/development_internet_vs_ecom.html")
+print("    - outputs/Visualizations/covid_impact_by_development.html")
+print("    - outputs/Visualizations/growth_comparison_crises.html")
 print()
 print(f"Final dataset: {len(master)} observations, {master['country_name'].nunique()} countries, {master['year'].min()}-{master['year'].max()}")
 print()
