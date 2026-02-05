@@ -1,94 +1,94 @@
-# Стійкість електронної комерції до світових криз
+# E-commerce Resilience to Global Crises
 
-## Панельний аналіз стійкості електронної комерції до глобальних шоків
+## Panel Analysis of E-commerce Resilience to Global Shocks
 
-**Магістерська дипломна робота**
+**Master's Degree Thesis**
 
-**Автор:** Лобачов Ілля  
-**Науковий керівник:** Владислав Вдовенко  
-**Навчальний заклад:** Neoversity  
-**Ступінь:** Master of Science in Computer Science  
-**Дата подання:** 26 січня 2026
-
----
-
-## 🎯 Огляд дослідження
-
-Це дослідження аналізує стійкість електронної комерції до глобальних криз та виявляє ключові детермінанти розвитку e-commerce у розвинених та розвивальних країнах. На основі панельних даних за період **2015–2023 років** по 45 країнам світу робота проводить глибокий кількісний аналіз впливу макроекономічних, інфраструктурних та інституціональних факторів на динаміку електронної комерції.
-
-### Три основні дослідницькі питання
-
-1. **Розвинені vs розвиваючи ринки**  
-   _Чим відрізняються розвинені й розвиваючи економіки за динамікою e-commerce і темпами зростання?_
-
-2. **Критичні детермінанти розвитку**  
-   _Які макроекономічні та інфраструктурні фактори найбільш сильно впливають на обсяги e-commerce?_
-
-3. **Регіональні особливості**  
-   _Які суттєві регіональні відмінності існують у структурі та динаміці розвитку e-commerce?_
-
-### 🔑 Ключові висновки
-
-✅ **Висновок 1:** Розвинені країни домінують за абсолютними обсягами e-commerce (75% глобального ринку), але розвиваючи ринки показують набагато вищі темпи зростання (15–20% CAGR vs 9–11% CAGR).
-
-✅ **Висновок 2:** Інтернет-проникнення є найбільш статистично значущим предиктором e-commerce обсягів (коефіцієнт еластичності 0.78, p < 0.001). ВВП на душу населення — другий по значущості фактор (коефіцієнт 0.52).
-
-✅ **Висновок 3:** Мобільна активність критична для розвивальних ринків. Мобільні користувачі інтернету є статистично значущим предиктором e-commerce у розвивальних країнах (p = 0.002).
-
-✅ **Висновок 4:** Пандемія COVID-19 прискорила e-commerce темпи на 10–15 п.п. у 2020–2021. Пост-пандемійне відновлення було асиметричним: розвинені ринки повернулись до докоронавирусних темпів, розвиваючи продовжили експонентне зростання.
-
-✅ **Висновок 5:** Азія та Тихий Океан (особливо Китай, Індія) заміняє Північну Америку як центр глобального e-commerce. Китай і Індія разом генерують ~40% глобального e-commerce обсягу у 2023.
+**Author:** Illia Lobachov  
+**Academic Advisor:** Vladislav Vdovenko  
+**Institution:** Neoversity  
+**Degree:** Master of Science in Computer Science  
+**Submission Date:** January 26, 2026
 
 ---
 
-## 📊 Дані та методологія
+## 🎯 Research Overview
 
-### Джерела даних
+This study analyzes the resilience of e-commerce to global crises and identifies key determinants of e-commerce development in developed and developing countries. Based on panel data for the period **2015–2023** covering 45 countries worldwide, this thesis conducts an in-depth quantitative analysis of the impact of macroeconomic, infrastructural, and institutional factors on the dynamics of electronic commerce.
 
-| Датасет | Покриття | Спостережень | Джерело |
-|---------|----------|--------------|---------|
-| **E-commerce обсяги** | 2015-2023, 45 країн | 405 | UNCTAD, Statista |
-| **Інтернет-проникнення** | 2015-2023 | 405 | ITU, World Bank |
-| **Макроекономічні показники** | 2015-2023 | 405 | IMF, World Bank |
-| **Мобільна активність** | 2015-2023 | 405 | GSMA Intelligence |
-| **Логістичні показники** | 2015-2023 | 405 | Logistics Performance Index |
+### Three Core Research Questions
 
-### Ключові змінні дослідження
+1. **Developed vs Developing Markets**  
+   _How do developed and developing economies differ in e-commerce dynamics and growth rates?_
 
-- **E-Commerce Sales** — загальний обсяг e-commerce продажів у країні (млрд USD)
-- **E-Commerce Growth Rate** — річний темп приросту e-commerce обсягів (%)
-- **Internet Penetration** — відсоток населення з доступом до інтернету (%)
-- **GDP per Capita** — ВВП на одного жителя (USD)
-- **Mobile Internet Users** — кількість користувачів мобільного інтернету (млн)
-- **Urbanization Rate** — відсоток міського населення (%)
-- **Development Status** — розвинена (1) або розвивальна (0) країна
+2. **Critical Determinants of Growth**  
+   _Which macroeconomic and infrastructural factors most strongly influence e-commerce volumes?_
 
-### Методологія аналізу
+3. **Regional Characteristics**  
+   _What significant regional differences exist in the structure and dynamics of e-commerce development?_
 
-Дослідження використовує комбінацію методів:
+### 🔑 Key Findings
 
-- **Описова статистика** — базовий аналіз панельних даних
-- **t-тест** — порівняння групи розвинених та розвивальних країн
-- **Панельна регресія** (Pooled OLS, Fixed Effects, Random Effects) — оцінка впливу факторів
-- **Хаусманів тест** — вибір між FE та RE моделями
-- **Регіональний аналіз** — декомпозиція за географічними регіонами
-- **Часовий аналіз** — виявлення впливу COVID-19 та макроекономічних шоків
+✅ **Finding 1:** Developed countries dominate in absolute e-commerce volumes (75% of global market), but developing markets show significantly higher growth rates (15–20% CAGR vs 9–11% CAGR).
+
+✅ **Finding 2:** Internet penetration is the most statistically significant predictor of e-commerce volumes (elasticity coefficient 0.78, p < 0.001). GDP per capita is the second most significant factor (coefficient 0.52).
+
+✅ **Finding 3:** Mobile activity is critical for developing markets. Mobile internet users are a statistically significant predictor of e-commerce in developing countries (p = 0.002).
+
+✅ **Finding 4:** The COVID-19 pandemic accelerated e-commerce growth rates by 10–15 percentage points in 2020–2021. Post-pandemic recovery was asymmetric: developed markets returned to pre-coronavirus rates, while developing markets continued exponential growth.
+
+✅ **Finding 5:** Asia-Pacific (especially China, India) is replacing North America as the center of global e-commerce. China and India together generate ~40% of global e-commerce volume in 2023.
 
 ---
 
-## 📁 Структура проєкту
+## 📊 Data and Methodology
+
+### Data Sources
+
+| Dataset | Coverage | Observations | Source |
+|---------|----------|--------------|--------|
+| **E-commerce volumes** | 2015-2023, 45 countries | 405 | UNCTAD, Statista |
+| **Internet penetration** | 2015-2023 | 405 | ITU, World Bank |
+| **Macroeconomic indicators** | 2015-2023 | 405 | IMF, World Bank |
+| **Mobile activity** | 2015-2023 | 405 | GSMA Intelligence |
+| **Logistics indicators** | 2015-2023 | 405 | Logistics Performance Index |
+
+### Key Research Variables
+
+- **E-Commerce Sales** — total e-commerce sales volume in country (billion USD)
+- **E-Commerce Growth Rate** — annual growth rate of e-commerce volumes (%)
+- **Internet Penetration** — percentage of population with internet access (%)
+- **GDP per Capita** — GDP per person (USD)
+- **Mobile Internet Users** — number of mobile internet users (millions)
+- **Urbanization Rate** — percentage of urban population (%)
+- **Development Status** — developed (1) or developing (0) country
+
+### Analysis Methodology
+
+The study employs a combination of econometric methods:
+
+- **Descriptive Statistics** — basic panel data analysis
+- **t-test** — comparison of developed and developing country groups
+- **Panel Regression** (Pooled OLS, Fixed Effects, Random Effects) — factor impact estimation
+- **Hausman Test** — selection between FE and RE models
+- **Regional Analysis** — decomposition by geographic regions
+- **Time Series Analysis** — identification of COVID-19 impact and macroeconomic shocks
+
+---
+
+## 📁 Project Structure
 
 ```
 Scientific-Research/
 │
-├── Datasets/                          # 📦 Вихідні дані
+├── Datasets/                          # 📦 Raw Data
 │   ├── e-commerce_sales_2015-2023.csv
 │   ├── internet_penetration.csv
 │   ├── macroeconomic_indicators.csv
 │   └── mobile_users.csv
 │
-├── outputs/                           # 📊 Результати аналізу
-│   ├── data/                          # CSV з результатами
+├── outputs/                           # 📊 Analysis Results
+│   ├── data/                          # CSV with results
 │   │   ├── analysis_ready.csv
 │   │   ├── summary_statistics.csv
 │   │   ├── regional_comparison.csv
@@ -96,217 +96,217 @@ Scientific-Research/
 │   │   ├── covid_impact_analysis.csv
 │   │   └── regression_results.csv
 │   │
-│   └── Visualizations/                # 📈 Інтерактивні графіки (HTML)
+│   └── Visualizations/                # 📈 Interactive Charts (HTML)
 │       ├── global_ecommerce_trend.html
 │       ├── developed_vs_developing.html
 │       ├── internet_vs_ecommerce.html
 │       ├── covid_impact.html
 │       ├── regional_comparison.html
-│       ├── regional_detail_*.html (4 файли по регіонах)
-│       └── regional_countries_*.html (4 файли по регіонах)
+│       ├── regional_detail_*.html (4 files by region)
+│       └── regional_countries_*.html (4 files by region)
 │
-├── scripts/                           # 🔧 Допоміжні скрипти
+├── scripts/                           # 🔧 Helper Scripts
 │   ├── data_preparation.py
 │   ├── descriptive_analysis.py
 │   ├── regression_analysis.py
 │   ├── regional_analysis.py
 │   └── visualization_generation.py
 │
-├── MASTER_PIPELINE.py                 # 🚀 Головний пайплайн
-├── README.md                          # 📖 Документація (українською)
-├── README_EN.md                       # 📖 Документація (англійською)
-└── DIPLOMA_THESIS.md                  # 📄 Повна дипломна робота
+├── MASTER_PIPELINE.py                 # 🚀 Main Pipeline
+├── README.md                          # 📖 Documentation (Ukrainian)
+├── README_EN.md                       # 📖 Documentation (English)
+└── DIPLOMA_THESIS.md                  # 📄 Full Thesis
 
 ```
 
 ---
 
-## 🚀 Швидкий старт
+## 🚀 Quick Start
 
-### Встановлення залежностей
+### Install Dependencies
 
 ```bash
 pip install pandas numpy scipy matplotlib seaborn plotly statsmodels openpyxl
 ```
 
-### Запуск повного пайплайну аналізу
+### Run Complete Analysis Pipeline
 
 ```bash
 python MASTER_PIPELINE.py
 ```
 
-Цей скрипт виконає:
-1. ✅ Завантаження та інтеграцію даних
-2. ✅ Очищення та валідацію
-3. ✅ Описову статистику
-4. ✅ Панельну регресію
-5. ✅ Регіональний аналіз
-6. ✅ Створення інтерактивних візуалізацій
+This script executes:
+1. ✅ Data loading and integration
+2. ✅ Data cleaning and validation
+3. ✅ Descriptive statistics
+4. ✅ Panel regression analysis
+5. ✅ Regional analysis
+6. ✅ Interactive visualization generation
 
-**Час виконання:** ~2–3 хвилини
+**Execution time:** ~2–3 minutes
 
-### Запуск окремих компонентів
+### Run Individual Components
 
 ```bash
-# Описова статистика та дескриптивний аналіз
+# Descriptive statistics and analysis
 python scripts/descriptive_analysis.py
 
-# Панельна регресія та статистичні тести
+# Panel regression and statistical tests
 python scripts/regression_analysis.py
 
-# Регіональний аналіз по країнах
+# Regional analysis by countries
 python scripts/regional_analysis.py
 
-# Регенерація інтерактивних графіків
+# Regenerate interactive charts
 python scripts/visualization_generation.py
 ```
 
 ---
 
-## 📈 Основні результати
+## 📈 Key Results
 
-### Глобальні тренди (2015–2023)
+### Global Trends (2015–2023)
 
-| Показник | 2015 | 2018 | 2020 | 2023 |
-|----------|------|------|------|------|
-| **Глобальні e-commerce обсяги (млрд USD)** | 2,150 | 3,350 | 4,280 | 5,800 |
-| **Річний темп приросту (%)** | 18% | 17% | 27% | 11% |
-| **Відсоток від світової роздрібної торгівлі (%)** | 4.5% | 6.2% | 8.5% | 12.0% |
+| Indicator | 2015 | 2018 | 2020 | 2023 |
+|-----------|------|------|------|------|
+| **Global e-commerce volume (billion USD)** | 2,150 | 3,350 | 4,280 | 5,800 |
+| **Annual growth rate (%)** | 18% | 17% | 27% | 11% |
+| **Share of global retail (%)** | 4.5% | 6.2% | 8.5% | 12.0% |
 
-**Ключові спостереження:**
-- E-commerce обсяги зросли у 2.7 рази за 8 років
-- Пік зростання у 2020–2021 роках (COVID-19 ефект)
-- Temпи нормалізувалися до 11–13% у 2022–2023
+**Key Observations:**
+- E-commerce volumes increased 2.7x over 8 years
+- Peak growth in 2020–2021 (COVID-19 effect)
+- Growth rates normalized to 11–13% in 2022–2023
 
-### Порівняння розвинених та розвивальних країн
+### Comparison of Developed and Developing Countries
 
-| Показник | Розвинені | Розвиваючи | Різниця |
-|----------|-----------|-----------|---------|
-| **Середній e-commerce обсяг на країну (млрд USD)** | 485 | 78 | 6.2x |
-| **Середній річний темп приросту (%)** | 9.5% | 17.8% | +8.3 п.п. |
-| **Середнє інтернет-проникнення (%)** | 87% | 62% | +25 п.п. |
-| **Середній ВВП на душу (USD)** | 42,500 | 8,350 | 5.1x |
+| Indicator | Developed | Developing | Difference |
+|-----------|-----------|-----------|-----------|
+| **Avg e-commerce volume per country (billion USD)** | 485 | 78 | 6.2x |
+| **Avg annual growth rate (%)** | 9.5% | 17.8% | +8.3 p.p. |
+| **Avg internet penetration (%)** | 87% | 62% | +25 p.p. |
+| **Avg GDP per capita (USD)** | 42,500 | 8,350 | 5.1x |
 
-### Результати панельної регресії (Pooled OLS)
+### Panel Regression Results (Pooled OLS)
 
 ```
 E-Commerce = 8.2 + 0.78 × Internet + 0.52 × GDP_pc + ε
 
-Результати:
-- Інтернет-проникнення: β = 0.78, p < 0.001 ***
-- ВВП на душу: β = 0.52, p < 0.001 ***
+Results:
+- Internet Penetration: β = 0.78, p < 0.001 ***
+- GDP per Capita: β = 0.52, p < 0.001 ***
 - R² = 0.68, Adjusted R² = 0.67
-- F-статистика = 245.3 (p < 0.001)
+- F-statistic = 245.3 (p < 0.001)
 ```
 
-**Інтерпретація:**
-- Збільшення інтернет-проникнення на 1% → зростання e-commerce на 0.78 млрд USD
-- Збільшення ВВП на 1,000 USD → зростання e-commerce на 0.52 млрд USD
+**Interpretation:**
+- 1% increase in internet penetration → 0.78 billion USD e-commerce growth
+- 1,000 USD increase in GDP per capita → 0.52 billion USD e-commerce growth
 
-### Регіональна декомпозиція (2023)
+### Regional Decomposition (2023)
 
-| Регіон | e-commerce (млрд USD) | % глобального | Темп CAGR |
-|--------|----------------------|---------------|-----------|
-| 🇨🇳 **Азія та Тихий Океан** | 2,850 | 49.1% | 18.5% |
-| 🇺🇸 **Північна Америка** | 922 | 15.9% | 10.2% |
-| 🇪🇺 **Європа та Центральна Азія** | 1,450 | 25.0% | 9.8% |
-| 🌍 **Інші регіони** | 578 | 10.0% | 15.3% |
+| Region | e-commerce (billion USD) | % of global | CAGR |
+|--------|------------------------|------------|------|
+| 🇨🇳 **Asia & Pacific** | 2,850 | 49.1% | 18.5% |
+| 🇺🇸 **North America** | 922 | 15.9% | 10.2% |
+| 🇪🇺 **Europe & Central Asia** | 1,450 | 25.0% | 9.8% |
+| 🌍 **Other Regions** | 578 | 10.0% | 15.3% |
 
-**Ключові висновки:**
-- Китай займає 37% глобального ринку (2,150 млрд USD)
-- Індія показує найвищий темп зростання (29.4% CAGR)
-- В'єтнам і Таїланд — молоді, динамічні ринки (22–28% CAGR)
+**Key Conclusions:**
+- China accounts for 37% of global market (2,150 billion USD)
+- India shows highest growth rate (29.4% CAGR)
+- Vietnam and Thailand — young, dynamic markets (22–28% CAGR)
 
-### Вплив COVID-19 на e-commerce
+### COVID-19 Impact on E-commerce
 
-| Період | Глобально | Розвинені | Розвиваючи |
-|--------|-----------|-----------|-----------|
+| Period | Global | Developed | Developing |
+|--------|--------|-----------|-----------|
 | **2019** | 16.5% | 11.2% | 24.8% |
-| **2020** (криза) | 27.6% | 20.3% | 31.5% |
-| **2021** (нормалізація) | 15.1% | 10.8% | 22.4% |
-| **2022** (повернення) | 10.2% | 8.5% | 15.8% |
+| **2020** (crisis) | 27.6% | 20.3% | 31.5% |
+| **2021** (normalization) | 15.1% | 10.8% | 22.4% |
+| **2022** (recovery) | 10.2% | 8.5% | 15.8% |
 
-Пандемія прискорила e-commerce зростання на 10–15 п.п., особливо у розвивальних ринках.
-
----
-
-## 📊 Інтерактивні візуалізації
-
-Всі графіки розташовані в папці `outputs/Visualizations/` та відкриваються в браузері.
-
-### Глобальні тренди
-- **global_ecommerce_trend.html** — еволюція e-commerce 2015–2023 з маркерами криз
-- **covid_impact.html** — розподіл на три періоди: до/під час/після COVID
-- **internet_vs_ecommerce.html** — взаємозв'язок інтернет-проникнення та e-commerce
-
-### Регіональний аналіз
-- **regional_comparison.html** — всі 4 регіони на одному інтерактивному графіку
-- **regional_detail_*.html** — детальний аналіз кожного регіону (4 файли)
-
-### Аналіз по країнах
-- **regional_countries_*.html** — кожен регіон з усіма країнами (4 файли)
-  - 🎛️ Dropdown меню: Частка / Обсяг / Інтернет-проникнення
-  - 📍 Маркери криз: 2008, 2020, 2022
-  - 🔍 Інтерактивні деталі при наведенні мишки
+The pandemic accelerated e-commerce growth by 10–15 percentage points, especially in developing markets.
 
 ---
 
-## 🔬 Наукові результати
+## 📊 Interactive Visualizations
 
-### Опубліковані висновки
+All charts are located in the `outputs/Visualizations/` folder and open in your web browser.
 
-Повна структурована дипломна робота доступна в файлі `DIPLOMA_THESIS.md` з:
-- Вступом та актуальністю дослідження
-- Оглядом літератури з 16+ авторитетних джерел
-- Методологією панельної регресії
-- Результатами та детальним обговоренням
-- Висновками та практичними рекомендаціями
-- Напрямами для подальших досліджень
+### Global Trends
+- **global_ecommerce_trend.html** — e-commerce evolution 2015–2023 with crisis markers
+- **covid_impact.html** — distribution across three periods: before/during/after COVID
+- **internet_vs_ecommerce.html** — relationship between internet penetration and e-commerce
 
-### Рекомендації для бізнесу
+### Regional Analysis
+- **regional_comparison.html** — all 4 regions on one interactive chart
+- **regional_detail_*.html** — detailed analysis of each region (4 files)
 
-**Для компаній, що планують глобальну експансію:**
-1. Диференціюйте стратегію залежно від розвитку країни-цілі
-2. Інвестуйте у мобільну інфраструктуру для розвивальних ринків
-3. Фокусуйтеся на логістиці та локалізації платіжних систем
-
-**Для стартапів і МСП:**
-1. Почніть з розвивальних ринків з високим темпом зростання
-2. Розробіть мобільні застосунки як первинний канал
-3. Партнеріст з локальними логістичними провайдерами
-
-**Для державних органів:**
-1. Інвестуйте у розширення інтернет-інфраструктури
-2. Розробіть сприятливу нормативно-правову базу для e-commerce
-3. Розвивайте логістичну інфраструктуру та спрощуйте митні процедури
+### Country-Level Analysis
+- **regional_countries_*.html** — each region with all countries (4 files)
+  - 🎛️ Dropdown menu: Share / Volume / Internet Penetration
+  - 📍 Crisis markers: 2008, 2020, 2022
+  - 🔍 Interactive details on hover
 
 ---
 
-## 📋 Обсяг роботи та статистика
+## 🔬 Scientific Results
 
-| Показник | Значення |
-|----------|----------|
-| **Період дослідження** | 2015–2023 (9 років) |
-| **Кількість країн** | 45 |
-| **Всього спостережень** | 405 |
-| **Джерел даних** | 5 основних + 10+ допоміжних |
-| **Регресійних моделей** | 4 основних + 2 додаткових |
-| **Графіків і таблиць** | 12+ |
-| **Сторінок дипломної роботи** | 35+ |
+### Published Findings
+
+The complete structured thesis is available in `DIPLOMA_THESIS.md` with:
+- Introduction and research relevance
+- Literature review with 16+ authoritative sources
+- Panel regression methodology
+- Detailed results and discussion
+- Conclusions and practical recommendations
+- Directions for future research
+
+### Business Recommendations
+
+**For companies planning global expansion:**
+1. Differentiate strategy based on country development level
+2. Invest in mobile infrastructure for developing markets
+3. Focus on logistics and localized payment systems
+
+**For startups and SMEs:**
+1. Start with high-growth developing markets
+2. Develop mobile apps as primary channel
+3. Partner with local logistics providers
+
+**For government agencies:**
+1. Invest in expanding internet infrastructure
+2. Develop favorable regulatory framework for e-commerce
+3. Develop logistics infrastructure and simplify customs procedures
 
 ---
 
-## 🛠️ Технічні характеристики
+## 📋 Work Scope and Statistics
 
-- **Мова програмування:** Python 3.9+
-- **Основні бібліотеки:** pandas, numpy, scipy, statsmodels, matplotlib, seaborn, plotly
-- **Операційні системи:** Windows, macOS, Linux
-- **Ліцензія:** Academic Research
-- **Тип роботи:** Магістерська дипломна робота
+| Metric | Value |
+|--------|-------|
+| **Research Period** | 2015–2023 (9 years) |
+| **Number of Countries** | 45 |
+| **Total Observations** | 405 |
+| **Data Sources** | 5 primary + 10+ supplementary |
+| **Regression Models** | 4 main + 2 additional |
+| **Charts and Tables** | 12+ |
+| **Thesis Pages** | 35+ |
 
 ---
 
-## 📚 Основні джерела
+## 🛠️ Technical Specifications
+
+- **Programming Language:** Python 3.9+
+- **Core Libraries:** pandas, numpy, scipy, statsmodels, matplotlib, seaborn, plotly
+- **Operating Systems:** Windows, macOS, Linux
+- **License:** Academic Research
+- **Work Type:** Master's Degree Thesis
+
+---
+
+## 📚 Primary Sources
 
 1. UNCTAD (2024). *E-commerce and Digital Economy Report 2024*
 2. IMF (2023). *World Economic Outlook*
@@ -316,45 +316,45 @@ E-Commerce = 8.2 + 0.78 × Internet + 0.52 × GDP_pc + ε
 6. GSMA Intelligence (2023). *Mobile Economy 2023*
 7. Logistics Performance Index (2023). *LPI Report 2023*
 
-Для повного списку 16+ джерел див. `DIPLOMA_THESIS.md`
+For complete list of 16+ sources, see `DIPLOMA_THESIS.md`
 
 ---
 
-## 📞 Контакти та інформація
+## 📞 Contact Information
 
-- **Автор:** Лобачов Ілля
-- **Науковий керівник:** Владислав Вдовенко
-- **Дата подання:** 26 січня 2026
-- **Навчальний заклад:** Neoversity
-- **Ступінь:** Master of Science in Computer Science
-- **Студентський номер:** 2975652834
-
----
-
-## 🙏 Подяки
-
-Дані надано та підтримано:
-- **UNCTAD** — статистика електронної комерції
-- **International Monetary Fund (IMF)** — макроекономічні дані
-- **World Bank** — індикатори розвитку
-- **International Telecommunication Union (ITU)** — IКТ показники
-- **GSMA Intelligence** — мобільна активність
-- **Statista & eCommerce Foundation** — e-commerce дослідження
+- **Author:** Illia Lobachov
+- **Academic Advisor:** Vladislav Vdovenko
+- **Submission Date:** January 26, 2026
+- **Institution:** Neoversity
+- **Degree:** Master of Science in Computer Science
+- **Student ID:** 2975652834
 
 ---
 
-## 📝 Цитування
+## 🙏 Acknowledgments
 
-При використанні цих даних або методології, будь ласка, посилайтеся:
+Data provided and supported by:
+- **UNCTAD** — e-commerce statistics
+- **International Monetary Fund (IMF)** — macroeconomic data
+- **World Bank** — development indicators
+- **International Telecommunication Union (ITU)** — ICT indicators
+- **GSMA Intelligence** — mobile activity data
+- **Statista & eCommerce Foundation** — e-commerce research
+
+---
+
+## 📝 Citation
+
+When using these data or methodology, please cite:
 
 ```
-Лобачов І. (2026). Стійкість електронної комерції до світових криз: 
-Панельний аналіз стійкості електронної комерції до глобальних шоків 
-(2015–2023). Магістерська дипломна робота, Neoversity.
+Lobachov, I. (2026). E-commerce Resilience to Global Crises: 
+Panel Analysis of E-commerce Resilience to Global Shocks (2015–2023). 
+Master's Thesis, Neoversity.
 ```
 
 ---
 
-**Останнє оновлення:** 26 січня 2026  
-**Версія:** 1.0  
-**Статус:** Завершено та затверджено 🎓
+**Last Updated:** January 26, 2026  
+**Version:** 1.0  
+**Status:** Completed and Approved 🎓
